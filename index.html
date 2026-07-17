@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kigan — Agentic AI Solutions</title>
+<meta name="description" content="Kigan designs and operates autonomous AI agents that take real actions inside the systems you already run." />
+<link rel="icon" type="image/png" href="assets/logo/kigan-mark-transparent.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400..600;1,400..600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#FBF8F2',
+          paper2: '#F3EEE4',
+          ink: '#191C1B',
+          ink2: '#434946',
+          ink3: '#767D79',
+          ink4: '#A8AEA9',
+          green: '#1E5C41',
+          greendeep: '#154732',
+          greentint: '#E7EFE9',
+          sage: '#9CC3AE',
+        },
+        fontFamily: {
+          display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
+          sans: ['Inter', '-apple-system', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+          mono: ['JetBrains Mono', 'Courier New', 'Courier', 'monospace'],
+        },
+        letterSpacing: {
+          label: '0.14em',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root {
+    --shadow-card: 0 1px 2px rgba(25,28,27,0.04), 0 8px 20px -6px rgba(25,28,27,0.10), 0 2px 8px -2px rgba(30,92,65,0.07);
+    --shadow-card-hover: 0 2px 4px rgba(25,28,27,0.06), 0 20px 36px -10px rgba(25,28,27,0.16), 0 4px 12px -2px rgba(30,92,65,0.12);
+    --shadow-float: 0 4px 10px rgba(25,28,27,0.08), 0 28px 48px -16px rgba(25,28,27,0.22);
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background-color: #FBF8F2; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* paper grain */
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 60;
+    opacity: 0.035; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .card-shadow { box-shadow: var(--shadow-card); }
+  .card-shadow:hover { box-shadow: var(--shadow-card-hover); }
+  .float-shadow { box-shadow: var(--shadow-float); }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  .btn-primary {
+    background-color: #1E5C41; color: #FBF8F2;
+    transition: transform 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
+  }
+  .btn-primary:hover { background-color: #154732; transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(21,71,50,0.45); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-ghost {
+    border: 1px solid #A8AEA9; color: #191C1B;
+    transition: border-color 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
+  }
+  .btn-ghost:hover { border-color: #1E5C41; background-color: #E7EFE9; transform: translateY(-2px); }
+  .btn-ghost:active { transform: translateY(0); }
+
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid #1E5C41; outline-offset: 3px; border-radius: 2px;
+  }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 1px; background: #1E5C41;
+    transition: right 0.4s var(--ease-spring);
+  }
+  .nav-link:hover::after { right: 0; }
+
+  /* pixel divider */
+  .pixel-divider { position: relative; height: 1px; background: #A8AEA9; opacity: 0.5; }
+  .pixel-divider .blocks { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; gap: 3px; background: #FBF8F2; padding: 0 10px; }
+  .pixel-divider .blocks span { width: 4px; height: 4px; display: block; }
+
+  /* card lift */
+  .lift { transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring); }
+  .lift:hover { transform: translateY(-5px); border-color: #1E5C41; }
+
+  /* agent trace card */
+  .trace-card { background: #191C1B; }
+  .trace-line { white-space: pre-wrap; overflow-wrap: break-word; }
+  .trace-cursor { display: inline-block; width: 7px; height: 14px; background: #9CC3AE; margin-left: 2px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+  /* ambient pixel field */
+  .pixel-field { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(14, 1fr); grid-template-rows: repeat(14, 1fr); pointer-events: none; }
+  .pixel-field span { background: #1E5C41; opacity: 0; animation: flicker 6s ease-in-out infinite; }
+  @keyframes flicker { 0%, 92%, 100% { opacity: 0; } 95% { opacity: 0.3; } }
+
+  .quote-bg { position: absolute; inset: 0; overflow: hidden; }
+  .quote-bg .pixel-field span { background: #9CC3AE; }
+
+  ::selection { background: #1E5C41; color: #FBF8F2; }
+
+  .mono-label { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  #mobile-menu { transition: max-height 0.4s var(--ease-spring), opacity 0.3s ease; }
+</style>
+</head>
+
+<body class="bg-paper text-ink font-sans antialiased">
+<div class="grain"></div>
+
+<!-- NAV -->
+<header class="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-ink4/40">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <img src="assets/logo/kigan-mark-transparent.png" alt="Kigan mark" class="h-8 w-8" />
+      <span class="font-display font-semibold text-lg tracking-tight">KIGAN</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 mono-label text-xs text-ink2">
+      <a href="#capabilities" class="nav-link hover:text-ink">Capabilities</a>
+      <a href="#process" class="nav-link hover:text-ink">Process</a>
+      <a href="#manifesto" class="nav-link hover:text-ink">Manifesto</a>
+      <a href="#contact" class="nav-link hover:text-ink">Contact</a>
+    </nav>
+    <a href="#contact" class="hidden md:inline-flex btn-primary px-5 py-2.5 text-sm font-medium rounded-sm">Start a project</a>
+    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu" aria-expanded="false">
+      <span class="w-6 h-px bg-ink"></span>
+      <span class="w-6 h-px bg-ink"></span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 opacity-0 border-t border-ink4/40 bg-paper">
+    <nav class="flex flex-col px-6 py-4 gap-4 mono-label text-xs text-ink2">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#process">Process</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#contact" class="text-green">Start a project →</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative max-w-6xl mx-auto px-6 md:px-10 pt-16 md:pt-24 pb-20 md:pb-28">
+  <div class="grid md:grid-cols-2 gap-14 md:gap-10 items-center">
+    <div>
+      <p class="mono-label text-xs text-green mb-6">Kigan — Agentic AI Solutions</p>
+      <h1 class="font-display font-semibold text-[2.75rem] leading-[1.05] md:text-6xl md:leading-[1.03] tracking-tight text-ink">
+        Software that finishes the <em class="italic text-green font-normal">task</em> — not just the sentence.
+      </h1>
+      <p class="mt-7 text-ink2 text-lg leading-[1.7] max-w-md font-light">
+        We design and operate autonomous AI agents that take real actions inside the systems you already run — reading data, making decisions, and carrying the work through to done.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#contact" class="btn-primary px-6 py-3.5 rounded-sm text-sm font-medium">Start a project</a>
+        <a href="#process" class="btn-ghost px-6 py-3.5 rounded-sm text-sm font-medium">See how we work</a>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="absolute -inset-3 opacity-[0.08] overflow-hidden rounded-sm">
+        <div class="pixel-field" id="pixel-field-hero"></div>
+      </div>
+      <div class="trace-card relative rounded-sm float-shadow p-6 md:p-7 font-mono text-[13px] leading-[1.9]">
+        <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+          <span class="text-sage/80 text-[11px] tracking-label uppercase">agent · inventory-reorder</span>
+          <span class="flex gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-white/20"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20"></span>
+            <span class="w-2 h-2 rounded-full bg-white/30"></span>
+          </span>
+        </div>
+        <div id="trace-lines" class="space-y-1.5 text-paper/90">
+          <div class="trace-line" data-text="&gt; scanning warehouse feed"></div>
+          <div class="trace-line" data-text="&gt; anomaly detected — SKU 4471 below threshold"></div>
+          <div class="trace-line" data-text="&gt; drafting purchase order"></div>
+          <div class="trace-line" data-text="&gt; routing to J. Alvarez for approval"></div>
+          <div class="trace-line" data-text="&gt; approved — 00:41 elapsed"></div>
+          <div class="trace-line" data-text="&gt; order placed with vendor"></div>
+          <div class="trace-line text-green" style="color:#9CC3AE" data-text="STATUS: complete" data-status="1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pixel-divider"><div class="blocks"><span style="background:#1E5C41"></span><span style="background:#A8AEA9"></span><span style="background:#1E5C41"></span></div></div>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+  <div class="reveal max-w-xl mb-14">
+    <p class="mono-label text-xs text-green mb-4">What we build</p>
+    <h2 class="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight">Four ways we put agents to work.</h2>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-5 md:gap-6">
+    <div class="reveal lift border border-ink4/50 bg-paper rounded-sm p-7 card-shadow">
+      <p class="mono-label text-[11px] text-green mb-4">Orchestration</p>
+      <h3 class="font-display font-semibold text-xl mb-3">Multi-agent systems</h3>
+      <p class="text-ink2 leading-[1.7] font-light">We design agents that plan, delegate to each other, and check their own work before it reaches a person.</p>
+    </div>
+    <div class="reveal lift border border-ink4/50 bg-paper rounded-sm p-7 card-shadow">
+      <p class="mono-label text-[11px] text-green mb-4">Integration</p>
+      <h3 class="font-display font-semibold text-xl mb-3">Built into your stack</h3>
+      <p class="text-ink2 leading-[1.7] font-light">Agents connect directly to the ERPs, CRMs, warehouses, and internal APIs you already run — no rip and replace.</p>
+    </div>
+    <div class="reveal lift border border-ink4/50 bg-paper rounded-sm p-7 card-shadow">
+      <p class="mono-label text-[11px] text-green mb-4">Autonomy</p>
+      <h3 class="font-display font-semibold text-xl mb-3">End-to-end workflows</h3>
+      <p class="text-ink2 leading-[1.7] font-light">An agent that starts a task carries it through to completion, not just the parts that were easy to automate.</p>
+    </div>
+    <div class="reveal lift border border-ink4/50 bg-paper rounded-sm p-7 card-shadow">
+      <p class="mono-label text-[11px] text-green mb-4">Oversight</p>
+      <h3 class="font-display font-semibold text-xl mb-3">Guardrails by default</h3>
+      <p class="text-ink2 leading-[1.7] font-light">Every agent ships with approval gates, audit trails, and a kill switch — autonomy your team can actually sign off on.</p>
+    </div>
+  </div>
+</section>
+
+<div class="pixel-divider"><div class="blocks"><span style="background:#A8AEA9"></span><span style="background:#1E5C41"></span><span style="background:#A8AEA9"></span></div></div>
+
+<!-- PROCESS -->
+<section id="process" class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+  <div class="reveal max-w-xl mb-16">
+    <p class="mono-label text-xs text-green mb-4">How we work</p>
+    <h2 class="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight">A short path from idea to <em class="italic text-green font-normal">autonomous</em>.</h2>
+  </div>
+
+  <div class="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+    <div class="hidden lg:block absolute top-[9px] left-0 right-0 h-px bg-ink4/50"></div>
+
+    <div class="reveal relative">
+      <div class="relative z-10 w-[18px] h-[18px] rounded-full bg-green mb-6"></div>
+      <p class="mono-label text-[11px] text-ink3 mb-2">01 · Discover</p>
+      <p class="text-ink2 leading-[1.7] font-light">We map the workflow, the data it touches, and where a person is currently making repetitive judgment calls.</p>
+    </div>
+    <div class="reveal relative">
+      <div class="relative z-10 w-[18px] h-[18px] rounded-full bg-green mb-6"></div>
+      <p class="mono-label text-[11px] text-ink3 mb-2">02 · Design</p>
+      <p class="text-ink2 leading-[1.7] font-light">We architect the agent, the tools it can call, and the guardrails around it — before any production code.</p>
+    </div>
+    <div class="reveal relative">
+      <div class="relative z-10 w-[18px] h-[18px] rounded-full bg-green mb-6"></div>
+      <p class="mono-label text-[11px] text-ink3 mb-2">03 · Deploy</p>
+      <p class="text-ink2 leading-[1.7] font-light">We ship into your existing stack, behind the access controls and approvals your team requires.</p>
+    </div>
+    <div class="reveal relative">
+      <div class="relative z-10 w-[18px] h-[18px] rounded-full bg-green mb-6"></div>
+      <p class="mono-label text-[11px] text-ink3 mb-2">04 · Operate</p>
+      <p class="text-ink2 leading-[1.7] font-light">We monitor, retrain, and extend the agent as your business changes around it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto" class="relative bg-ink text-paper py-24 md:py-32 overflow-hidden">
+  <div class="quote-bg opacity-[0.06]">
+    <div class="pixel-field"></div>
+  </div>
+  <div class="reveal relative max-w-3xl mx-auto px-6 md:px-10 text-center">
+    <p class="font-display italic font-normal text-[1.75rem] md:text-4xl leading-[1.4] tracking-tight">
+      "Most software still waits to be asked.<br class="hidden md:block" /> We build the kind that <span class="text-sage not-italic font-medium">doesn't wait.</span>"
+    </p>
+    <p class="mono-label text-xs text-ink4 mt-8">— Kigan, on agentic AI</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="bg-paper2">
+  <div class="reveal max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+    <div>
+      <p class="mono-label text-xs text-green mb-4">Let's talk</p>
+      <h2 class="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight max-w-lg">Tell us what you'd like to <em class="italic text-green font-normal">automate</em>.</h2>
+      <p class="mt-5 text-ink2 leading-[1.7] max-w-md font-light">A short call is usually enough to tell if an agent is the right fit for the workflow you have in mind.</p>
+    </div>
+    <div class="flex flex-col items-start md:items-end gap-4 shrink-0">
+      <a href="mailto:hello@kigansolutions.ai" class="btn-primary px-7 py-4 rounded-sm text-sm font-medium">Start a project</a>
+      <a href="mailto:hello@kigansolutions.ai" class="mono-label text-xs text-ink2 hover:text-green transition-colors">hello@kigansolutions.ai</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-ink4">
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-14 grid md:grid-cols-3 gap-10 items-start">
+    <div class="flex items-center gap-3">
+      <img src="assets/logo/kigan-mark-on-ink.png" alt="Kigan" class="h-9 w-9" />
+      <span class="font-display font-semibold text-paper text-lg">KIGAN</span>
+    </div>
+    <nav class="flex flex-wrap gap-x-8 gap-y-3 mono-label text-xs">
+      <a href="#capabilities" class="hover:text-paper transition-colors">Capabilities</a>
+      <a href="#process" class="hover:text-paper transition-colors">Process</a>
+      <a href="#manifesto" class="hover:text-paper transition-colors">Manifesto</a>
+      <a href="#contact" class="hover:text-paper transition-colors">Contact</a>
+    </nav>
+    <p class="mono-label text-xs md:text-right">© 2026 Kigan Solutions.<br class="md:hidden" /> All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  const menuBtn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    menu.style.maxHeight = menuOpen ? menu.scrollHeight + 'px' : '0px';
+    menu.style.opacity = menuOpen ? '1' : '0';
+    menuBtn.setAttribute('aria-expanded', String(menuOpen));
+  });
+
+  // scroll reveal — manual viewport check (robust to short pages / fast programmatic scroll)
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = Array.from(document.querySelectorAll('.reveal'));
+  if (reduceMotion) {
+    revealEls.forEach((el) => el.classList.add('in'));
+  } else {
+    function checkReveals() {
+      const vh = window.innerHeight;
+      for (const el of revealEls) {
+        if (el.classList.contains('in')) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top < vh * 0.92) el.classList.add('in');
+      }
+    }
+    checkReveals();
+    window.addEventListener('scroll', checkReveals, { passive: true });
+    window.addEventListener('resize', checkReveals);
+  }
+
+  // ambient pixel fields
+  document.querySelectorAll('.pixel-field').forEach((field) => {
+    const count = 196;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.style.animationDelay = (Math.random() * 8) + 's';
+      span.style.animationDuration = (5 + Math.random() * 4) + 's';
+      field.appendChild(span);
+    }
+  });
+
+  // hero trace scramble
+  const scrambleChars = '░▒▓█▌▐';
+  function scrambleLine(el, finalText, duration) {
+    if (reduceMotion) { el.textContent = finalText; return Promise.resolve(); }
+    return new Promise((resolve) => {
+      const start = performance.now();
+      const len = finalText.length;
+      function frame(now) {
+        const t = Math.min(1, (now - start) / duration);
+        const revealCount = Math.floor(t * len);
+        let out = '';
+        for (let i = 0; i < len; i++) {
+          if (i < revealCount || finalText[i] === ' ') out += finalText[i];
+          else out += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        }
+        el.textContent = out;
+        if (t < 1) requestAnimationFrame(frame);
+        else { el.textContent = finalText; resolve(); }
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  async function runTrace() {
+    const lines = document.querySelectorAll('#trace-lines .trace-line');
+    for (const line of lines) {
+      const text = line.getAttribute('data-text');
+      await scrambleLine(line, text, 420);
+      await new Promise((r) => setTimeout(r, 90));
+    }
+    const cursor = document.createElement('span');
+    cursor.className = 'trace-cursor';
+    lines[lines.length - 1].appendChild(cursor);
+  }
+  window.addEventListener('load', () => setTimeout(runTrace, 350));
+</script>
+</body>
+</html>
