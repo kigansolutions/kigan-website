@@ -10,12 +10,12 @@
 
 ## Local Server
 - **Always serve on localhost** — never screenshot a `file:///` URL.
-- Start the dev server: `node serve.mjs` (serves the project root at `http://localhost:3000`)
-- `serve.mjs` lives in the project root. Start it in the background before taking any screenshots.
+- Start the dev server: `npm run dev` (Next.js dev server, defaults to `http://localhost:3000` — check terminal output in case 3000 is busy and Next auto-increments the port)
+- There is no more `serve.mjs` — retired when the project moved to Next.js.
 - If the server is already running, do not start a second instance.
 
 ## Screenshot Workflow
-- Puppeteer is installed at `C:/Users/nateh/AppData/Local/Temp/puppeteer-test/`. Chrome cache is at `C:/Users/nateh/.cache/puppeteer/`.
+- Puppeteer is installed as a devDependency (`node_modules/puppeteer`); Chrome's cache lives at `~/.cache/puppeteer/`.
 - **Always screenshot from localhost:** `node screenshot.mjs http://localhost:3000`
 - Screenshots are saved automatically to `./temporary screenshots/screenshot-N.png` (auto-incremented, never overwritten).
 - Optional label suffix: `node screenshot.mjs http://localhost:3000 label` → saves as `screenshot-N-label.png`
@@ -25,8 +25,10 @@
 - Check: spacing/padding, font size/weight/line-height, colors (exact hex), alignment, border-radius, shadows, image sizing
 
 ## Output Defaults
-- Single `index.html` file, all styles inline, unless user says otherwise
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
+- Next.js App Router project (TypeScript, Tailwind v4, shadcn/ui) — no longer a single static `index.html`
+- New page sections go in `components/site/`; shared shadcn primitives go in `components/ui/` (add via `npx shadcn add <name>` — don't hand-edit that directory for bespoke content)
+- Tailwind v4 CSS-based config lives in `app/globals.css` (`@theme` block) — there is no `tailwind.config.js`
+- Static export (`output: 'export'` in `next.config.ts`) — `npm run build` produces `out/`, still a plain folder of files hostable anywhere
 - Placeholder images: `https://placehold.co/WIDTHxHEIGHT`
 - Mobile-first responsive
 

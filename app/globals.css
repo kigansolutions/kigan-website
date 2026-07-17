@@ -1,0 +1,254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme {
+  /* Kigan brand colors — source of truth: kigan-brand skill */
+  --color-paper: #FBF8F2;
+  --color-paper-2: #F3EEE4;
+  --color-ink: #191C1B;
+  --color-ink-2: #434946;
+  --color-ink-3: #767D79;
+  --color-ink-4: #A8AEA9;
+  --color-green: #1E5C41;
+  --color-green-deep: #154732;
+  --color-green-tint: #E7EFE9;
+  --color-sage: #9CC3AE;
+
+  --shadow-card: 0 1px 2px rgba(25,28,27,.04), 0 8px 20px -6px rgba(25,28,27,.10), 0 2px 8px -2px rgba(30,92,65,.07);
+  --shadow-card-hover: 0 2px 4px rgba(25,28,27,.06), 0 20px 36px -10px rgba(25,28,27,.16), 0 4px 12px -2px rgba(30,92,65,.12);
+  --shadow-float: 0 4px 10px rgba(25,28,27,.08), 0 28px 48px -16px rgba(25,28,27,.22);
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --tracking-label: 0.14em;
+}
+
+@theme inline {
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "Courier New", Courier, monospace;
+
+  /* map shadcn's semantic tokens onto Kigan tokens so any future
+     `npx shadcn add <primitive>` inherits brand colors instead of
+     shadcn's neutral defaults */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-primary: var(--color-green);
+  --color-primary-foreground: var(--color-paper);
+  --color-secondary: var(--color-paper-2);
+  --color-secondary-foreground: var(--color-ink);
+  --color-muted: var(--color-paper-2);
+  --color-muted-foreground: var(--color-ink-3);
+  --color-accent: var(--color-green-tint);
+  --color-accent-foreground: var(--color-green-deep);
+  --color-border: var(--color-ink-4);
+  --color-input: var(--color-ink-4);
+  --color-ring: var(--color-green);
+  --color-card: var(--color-paper);
+  --color-card-foreground: var(--color-ink);
+  --color-popover: var(--color-paper);
+  --color-popover-foreground: var(--color-ink);
+  --color-destructive: #8A2E1E;
+}
+
+:root {
+  --radius: 0.125rem;
+}
+
+html { scroll-behavior: smooth; }
+::selection { background: var(--color-green); color: var(--color-paper); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ---------- site chrome, ported from the static build (hex → tokens) ---------- */
+
+.mono-label {
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 60;
+  opacity: 0.035; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.btn-primary {
+  background-color: var(--color-green); color: var(--color-paper);
+  transition: transform 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
+}
+.btn-primary:hover { background-color: var(--color-green-deep); transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(21,71,50,0.45); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  border: 1px solid var(--color-ink-4); color: var(--color-ink);
+  transition: border-color 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
+}
+.btn-ghost:hover { border-color: var(--color-green); background-color: var(--color-green-tint); transform: translateY(-2px); }
+.btn-ghost:active { transform: translateY(0); }
+
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--color-green); outline-offset: 3px; border-radius: 2px;
+}
+
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 1px; background: var(--color-green);
+  transition: right 0.4s var(--ease-spring);
+}
+.nav-link:hover::after { right: 0; }
+
+.pixel-divider { position: relative; height: 1px; background: var(--color-ink-4); opacity: 0.5; }
+.pixel-divider .blocks { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; gap: 3px; background: var(--color-paper); padding: 0 10px; }
+.pixel-divider .blocks span { width: 4px; height: 4px; display: block; }
+
+.lift { transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring); }
+.lift:hover { transform: translateY(-5px); border-color: var(--color-green); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+.pixel-field { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(14, 1fr); grid-template-rows: repeat(14, 1fr); pointer-events: none; }
+.pixel-field span { background: var(--color-green); opacity: 0; animation: flicker 6s ease-in-out infinite; }
+@keyframes flicker { 0%, 92%, 100% { opacity: 0; } 95% { opacity: 0.3; } }
+
+.quote-bg { position: absolute; inset: 0; overflow: hidden; }
+.quote-bg .pixel-field span { background: var(--color-sage); }
+
+/* ---------- hero-section.tsx: word-cascade hero, restyled to Kigan brand ---------- */
+
+@keyframes word-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes grid-draw {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes underline-grow {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-5px) translateX(-3px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-15px) translateX(7px);
+    opacity: 0.8;
+  }
+}
+
+/* base/resting-state rules for classes the hero component references —
+   the component drives animation start via inline style (word-by-word
+   `el.style.animation = ...`) or by flipping `animationPlayState` on
+   scroll, rather than toggling modifier classes, so these only need to
+   define the resting state + (for grid-line/detail-dot) the always-on
+   entrance driven by each element's own inline animation-delay. */
+
+.word { display: inline-block; opacity: 0; margin-right: 0.28em; }
+
+.grid-line {
+  stroke: var(--color-ink-4);
+  stroke-width: 0.5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  opacity: 0;
+  animation: grid-draw 2s ease-out forwards;
+}
+
+.detail-dot {
+  fill: var(--color-sage);
+  opacity: 0;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.corner-element {
+  position: absolute;
+  opacity: 0;
+  animation: word-appear 0.8s ease-out forwards;
+}
+
+.floating-element {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-sage);
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.text-decoration { position: relative; display: inline-block; }
+.text-decoration::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  height: 2px; width: 0;
+  background: var(--color-green);
+  animation: underline-grow 1s ease-out forwards;
+  animation-delay: 3.5s;
+}

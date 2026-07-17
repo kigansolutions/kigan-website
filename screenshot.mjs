@@ -30,7 +30,7 @@ const browser = await puppeteer.launch();
 const page = await browser.newPage();
 await page.setViewport({ width, height });
 await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
-await new Promise((r) => setTimeout(r, 4000)); // let hero trace animation finish
+await new Promise((r) => setTimeout(r, 7500)); // let the hero's word-cascade animation finish (~6.3s total)
 
 // scroll through the full page to trigger any IntersectionObserver reveals
 await page.evaluate(async () => {
