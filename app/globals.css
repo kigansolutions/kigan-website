@@ -91,18 +91,40 @@ html { scroll-behavior: smooth; }
 }
 
 .btn-primary {
-  background-color: var(--color-green); color: var(--color-paper);
-  transition: transform 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
+  background: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-deep) 100%);
+  color: var(--color-paper);
+  box-shadow:
+    0 1px 2px rgba(21,71,50,0.3),
+    0 6px 16px -6px rgba(21,71,50,0.5),
+    0 0 0 1px rgba(156,195,174,0.15);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
 }
-.btn-primary:hover { background-color: var(--color-green-deep); transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(21,71,50,0.45); }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.015);
+  box-shadow:
+    0 2px 4px rgba(21,71,50,0.35),
+    0 18px 34px -10px rgba(21,71,50,0.6),
+    0 0 0 1px rgba(156,195,174,0.4),
+    0 0 32px -4px rgba(156,195,174,0.5);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(1);
+  box-shadow:
+    0 1px 2px rgba(21,71,50,0.3),
+    0 4px 10px -4px rgba(21,71,50,0.5),
+    0 0 0 1px rgba(156,195,174,0.25);
+}
 
 .btn-ghost {
   border: 1px solid var(--color-ink-4); color: var(--color-ink);
-  transition: border-color 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
+  box-shadow: 0 0 0 0 rgba(156,195,174,0);
+  transition: border-color 0.35s var(--ease-spring), background-color 0.35s var(--ease-spring), transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
 }
-.btn-ghost:hover { border-color: var(--color-green); background-color: var(--color-green-tint); transform: translateY(-2px); }
-.btn-ghost:active { transform: translateY(0); }
+.btn-ghost:hover {
+  border-color: var(--color-green); background-color: var(--color-green-tint); transform: translateY(-2px);
+  box-shadow: 0 0 22px -6px rgba(30,92,65,0.35);
+}
+.btn-ghost:active { transform: translateY(0); box-shadow: none; }
 
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   outline: 2px solid var(--color-green); outline-offset: 3px; border-radius: 2px;

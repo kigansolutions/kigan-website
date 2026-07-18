@@ -14,11 +14,11 @@ export function CallToAction() {
           </p>
         </div>
         <div className="flex flex-col items-start md:items-end gap-4 shrink-0">
-          <a href="mailto:hello@kigansolutions.ai" className="btn-primary px-7 py-4 rounded-sm text-sm font-medium">
+          <a href="mailto:enquiries@kigansolutions.co.za" className="btn-primary px-7 py-4 rounded-sm text-sm font-medium">
             Start a project
           </a>
-          <a href="mailto:hello@kigansolutions.ai" className="mono-label text-xs text-ink-2 hover:text-green transition-colors">
-            hello@kigansolutions.ai
+          <a href="mailto:enquiries@kigansolutions.co.za" className="mono-label text-xs text-ink-2 hover:text-green transition-colors">
+            enquiries@kigansolutions.co.za
           </a>
         </div>
       </Reveal>

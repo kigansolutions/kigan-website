@@ -9,7 +9,7 @@ const cards = [
   {
     tag: "Integration",
     title: "Built into your stack",
-    body: "Agents connect directly to the ERPs, CRMs, warehouses, and internal APIs you already run — no rip and replace.",
+    body: "Agents connect directly to the ERPs, CRMs, and internal APIs you already run — no rip and replace.",
   },
   {
     tag: "Autonomy",
