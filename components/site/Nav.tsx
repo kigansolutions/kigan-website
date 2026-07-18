@@ -40,12 +40,21 @@ export function Nav() {
               scrolled ? "h-8 w-8" : "h-24 w-24 brightness-0 invert"
             }`}
           />
-          <span
-            className={`font-display font-semibold tracking-tight transition-colors duration-500 ${
-              scrolled ? "text-lg text-ink" : "text-2xl md:text-3xl text-paper"
-            }`}
-          >
-            KIGAN
+          <span className="flex flex-col leading-none">
+            <span
+              className={`font-display font-semibold tracking-tight transition-colors duration-500 ${
+                scrolled ? "text-lg text-ink" : "text-2xl md:text-3xl text-paper"
+              }`}
+            >
+              KIGAN
+            </span>
+            <span
+              className={`mono-label transition-colors duration-500 ${
+                scrolled ? "text-[9px] text-ink-3 mt-0.5" : "text-[10px] md:text-xs text-sage mt-1.5"
+              }`}
+            >
+              Agentic AI Solutions
+            </span>
           </span>
         </a>
         <nav

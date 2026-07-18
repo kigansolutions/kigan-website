@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 
 export function HeroSection() {
   const gradientRef = useRef<HTMLDivElement>(null);
@@ -143,79 +142,44 @@ export function HeroSection() {
       <div className="floating-element" style={{ top: "40%", left: "10%", animationDelay: "6s" }} />
       <div className="floating-element" style={{ top: "75%", left: "90%", animationDelay: "6.5s" }} />
 
-      <div className="relative z-10 min-h-screen flex flex-col justify-between items-center px-8 pt-40 pb-12 md:px-16 md:pt-48 md:pb-20">
-        {/* Top lockup: mark / KIGAN / tagline, mirroring the real logo lockup */}
-        <div className="text-center flex flex-col items-center">
-          <div
-            className="mb-3"
-            style={{ opacity: 0, animation: "word-appear 0.9s ease-out forwards", animationDelay: "0ms" }}
-          >
-            <Image
-              src="/logo/kigan-mark-transparent.png"
-              alt="Kigan"
-              width={56}
-              height={56}
-              priority
-              className="h-10 w-10 md:h-14 md:w-14 brightness-0 invert"
-            />
-          </div>
-          <h2
-            className="font-sans font-extrabold uppercase tracking-[0.06em] leading-none text-3xl md:text-4xl"
-            style={{ color: "var(--color-paper)" }}
-          >
-            <span className="word" data-delay="250" style={{ marginRight: 0 }}>KIGAN</span>
-          </h2>
-          <p
-            className="mt-3 font-sans font-bold uppercase tracking-[0.3em] text-[11px] md:text-xs"
-            style={{ color: "var(--color-sage)" }}
-          >
-            <span className="word" data-delay="550">Agentic</span>
-            <span className="word" data-delay="700">AI</span>
-            <span className="word" data-delay="850">Solutions</span>
-          </p>
-          <div
-            className="mt-5 w-16 h-px opacity-30 mx-auto"
-            style={{ background: "linear-gradient(to right, transparent, var(--color-sage), transparent)" }}
-          />
-        </div>
-
+      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center gap-16 md:gap-20 px-8 pt-32 pb-12 md:px-16 md:pt-40 md:pb-20">
         {/* Main headline */}
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extralight leading-tight tracking-tight text-decoration" style={{ color: "var(--color-paper)" }}>
             <div className="mb-4 md:mb-6">
-              <span className="word" data-delay="1600">Software</span>
-              <span className="word" data-delay="1750">that</span>
-              <span className="word" data-delay="1900">finishes</span>
-              <span className="word" data-delay="2050">the</span>
-              <span className="word" data-delay="2200">task</span>
-              <span className="word" data-delay="2350">—</span>
-              <span className="word" data-delay="2500">not</span>
-              <span className="word" data-delay="2650">just</span>
-              <span className="word" data-delay="2800">the</span>
-              <span className="word" data-delay="2950">sentence.</span>
+              <span className="word" data-delay="200">Software</span>
+              <span className="word" data-delay="350">that</span>
+              <span className="word" data-delay="500">finishes</span>
+              <span className="word" data-delay="650">the</span>
+              <span className="word" data-delay="800">task</span>
+              <span className="word" data-delay="950">—</span>
+              <span className="word" data-delay="1100">not</span>
+              <span className="word" data-delay="1250">just</span>
+              <span className="word" data-delay="1400">the</span>
+              <span className="word" data-delay="1550">sentence.</span>
             </div>
             <div className="text-2xl md:text-3xl lg:text-4xl font-thin leading-relaxed" style={{ color: "var(--color-sage)" }}>
-              <span className="word" data-delay="3200">Agents</span>
-              <span className="word" data-delay="3350">that</span>
-              <span className="word" data-delay="3500">read,</span>
-              <span className="word" data-delay="3650">decide,</span>
-              <span className="word" data-delay="3800">and</span>
-              <span className="word" data-delay="3950">act</span>
-              <span className="word" data-delay="4100">inside</span>
-              <span className="word" data-delay="4250">the</span>
-              <span className="word" data-delay="4400">systems</span>
-              <span className="word" data-delay="4550">you</span>
-              <span className="word" data-delay="4700">already</span>
-              <span className="word" data-delay="4850">run.</span>
+              <span className="word" data-delay="1800">Agents</span>
+              <span className="word" data-delay="1950">that</span>
+              <span className="word" data-delay="2100">read,</span>
+              <span className="word" data-delay="2250">decide,</span>
+              <span className="word" data-delay="2400">and</span>
+              <span className="word" data-delay="2550">act</span>
+              <span className="word" data-delay="2700">inside</span>
+              <span className="word" data-delay="2850">the</span>
+              <span className="word" data-delay="3000">systems</span>
+              <span className="word" data-delay="3150">you</span>
+              <span className="word" data-delay="3300">already</span>
+              <span className="word" data-delay="3450">run.</span>
             </div>
           </h1>
           <div
             className="absolute -left-8 top-1/2 w-4 h-px opacity-20"
-            style={{ background: "var(--color-sage)", animation: "word-appear 1s ease-out forwards", animationDelay: "3.5s" }}
+            style={{ background: "var(--color-sage)", animation: "word-appear 1s ease-out forwards", animationDelay: "2.1s" }}
           />
           <div
             className="absolute -right-8 top-1/2 w-4 h-px opacity-20"
-            style={{ background: "var(--color-sage)", animation: "word-appear 1s ease-out forwards", animationDelay: "3.7s" }}
+            style={{ background: "var(--color-sage)", animation: "word-appear 1s ease-out forwards", animationDelay: "2.3s" }}
           />
         </div>
 
@@ -226,18 +190,18 @@ export function HeroSection() {
             style={{ background: "linear-gradient(to right, transparent, var(--color-sage), transparent)" }}
           />
           <h2 className="text-xs md:text-sm font-mono font-light uppercase tracking-[0.2em] opacity-80" style={{ color: "var(--color-sage)" }}>
-            <span className="word" data-delay="5000">Multi-agent</span>
-            <span className="word" data-delay="5150">orchestration.</span>
-            <span className="word" data-delay="5300">Real</span>
-            <span className="word" data-delay="5450">system</span>
-            <span className="word" data-delay="5600">integration.</span>
-            <span className="word" data-delay="5750">Guardrails</span>
-            <span className="word" data-delay="5900">by</span>
-            <span className="word" data-delay="6050">default.</span>
+            <span className="word" data-delay="3600">Multi-agent</span>
+            <span className="word" data-delay="3750">orchestration.</span>
+            <span className="word" data-delay="3900">Real</span>
+            <span className="word" data-delay="4050">system</span>
+            <span className="word" data-delay="4200">integration.</span>
+            <span className="word" data-delay="4350">Guardrails</span>
+            <span className="word" data-delay="4500">by</span>
+            <span className="word" data-delay="4650">default.</span>
           </h2>
           <div
             className="mt-6 flex justify-center space-x-4 opacity-0"
-            style={{ animation: "word-appear 1s ease-out forwards", animationDelay: "5s" }}
+            style={{ animation: "word-appear 1s ease-out forwards", animationDelay: "3.6s" }}
           >
             <div className="w-1 h-1 rounded-full opacity-40" style={{ background: "var(--color-sage)" }} />
             <div className="w-1 h-1 rounded-full opacity-60" style={{ background: "var(--color-sage)" }} />
