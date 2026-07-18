@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 
 export function CallToAction() {
   return (
-    <section id="contact" className="bg-paper-2">
+    <section id="contact" className="bg-paper-2 scroll-mt-24">
       <Reveal className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div>
           <p className="mono-label text-xs text-green mb-4">Let&rsquo;s talk</p>

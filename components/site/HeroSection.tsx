@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export function HeroSection() {
   const gradientRef = useRef<HTMLDivElement>(null);
@@ -142,18 +143,34 @@ export function HeroSection() {
       <div className="floating-element" style={{ top: "40%", left: "10%", animationDelay: "6s" }} />
       <div className="floating-element" style={{ top: "75%", left: "90%", animationDelay: "6.5s" }} />
 
-      <div className="relative z-10 min-h-screen flex flex-col justify-between items-center px-8 py-12 md:px-16 md:py-20">
-        {/* Top tagline */}
-        <div className="text-center">
-          <h2 className="text-xs md:text-sm font-mono font-light uppercase tracking-[0.2em] opacity-80" style={{ color: "var(--color-sage)" }}>
-            <span className="word" data-delay="0"><b>Kigan</b></span>
-            <span className="word" data-delay="200">—</span>
-            <span className="word" data-delay="400">Agentic</span>
-            <span className="word" data-delay="600">AI</span>
-            <span className="word" data-delay="800">Solutions.</span>
+      <div className="relative z-10 min-h-screen flex flex-col justify-between items-center px-8 pt-40 pb-12 md:px-16 md:pt-48 md:pb-20">
+        {/* Top lockup: mark / KIGAN / tagline, mirroring the real logo lockup */}
+        <div className="text-center flex flex-col items-center">
+          <Image
+            src="/logo/kigan-mark-on-ink.png"
+            alt="Kigan"
+            width={56}
+            height={56}
+            priority
+            className="h-10 w-10 md:h-14 md:w-14 mb-3"
+            style={{ opacity: 0, animation: "word-appear 0.9s ease-out forwards", animationDelay: "0ms" }}
+          />
+          <h2
+            className="font-sans font-extrabold uppercase tracking-[0.06em] leading-none text-3xl md:text-4xl"
+            style={{ color: "var(--color-paper)" }}
+          >
+            <span className="word" data-delay="250" style={{ marginRight: 0 }}>KIGAN</span>
           </h2>
+          <p
+            className="mt-3 font-sans font-bold uppercase tracking-[0.3em] text-[11px] md:text-xs"
+            style={{ color: "var(--color-sage)" }}
+          >
+            <span className="word" data-delay="550">Agentic</span>
+            <span className="word" data-delay="700">AI</span>
+            <span className="word" data-delay="850">Solutions</span>
+          </p>
           <div
-            className="mt-4 w-16 h-px opacity-30 mx-auto"
+            className="mt-5 w-16 h-px opacity-30 mx-auto"
             style={{ background: "linear-gradient(to right, transparent, var(--color-sage), transparent)" }}
           />
         </div>

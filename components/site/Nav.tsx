@@ -1,37 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function check() {
+      setScrolled(window.scrollY > window.innerHeight * 0.85);
+    }
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    return () => window.removeEventListener("scroll", check);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur border-b border-ink-4/40">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 group">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+        scrolled
+          ? "bg-paper/90 backdrop-blur border-b border-ink-4/40"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div
+        className={`max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between transition-[height] duration-500 ${
+          scrolled ? "h-20" : "h-36 md:h-40"
+        }`}
+      >
+        <a href="#top" className="flex items-center gap-4 group">
           <Image
-            src="/logo/kigan-mark-transparent.png"
+            src={scrolled ? "/logo/kigan-mark-transparent.png" : "/logo/kigan-mark-on-ink.png"}
             alt="Kigan mark"
-            width={32}
-            height={32}
-            className="h-8 w-8"
+            width={112}
+            height={112}
+            priority
+            className={`transition-[height,width] duration-500 ${
+              scrolled ? "h-8 w-8" : "h-24 w-24"
+            }`}
           />
-          <span className="font-display font-semibold text-lg tracking-tight">
+          <span
+            className={`font-display font-semibold tracking-tight transition-colors duration-500 ${
+              scrolled ? "text-lg text-ink" : "text-2xl md:text-3xl text-paper"
+            }`}
+          >
             KIGAN
           </span>
         </a>
-        <nav className="hidden md:flex items-center gap-9 mono-label text-xs text-ink-2">
-          <a href="#capabilities" className="nav-link hover:text-ink">
+        <nav
+          className={`hidden md:flex items-center gap-9 mono-label text-xs transition-colors duration-500 ${
+            scrolled ? "text-ink-2" : "text-paper/80"
+          }`}
+        >
+          <a href="#capabilities" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
             Capabilities
           </a>
-          <a href="#process" className="nav-link hover:text-ink">
+          <a href="#process" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
             Process
           </a>
-          <a href="#manifesto" className="nav-link hover:text-ink">
+          <a href="#manifesto" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
             Manifesto
           </a>
-          <a href="#contact" className="nav-link hover:text-ink">
+          <a href="#contact" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
             Contact
           </a>
         </nav>
@@ -47,8 +78,8 @@ export function Nav() {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <span className="w-6 h-px bg-ink" />
-          <span className="w-6 h-px bg-ink" />
+          <span className={`w-6 h-px transition-colors duration-500 ${scrolled ? "bg-ink" : "bg-paper"}`} />
+          <span className={`w-6 h-px transition-colors duration-500 ${scrolled ? "bg-ink" : "bg-paper"}`} />
         </button>
       </div>
       <div

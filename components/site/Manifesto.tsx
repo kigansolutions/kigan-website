@@ -3,7 +3,7 @@ import { PixelField } from "./PixelField";
 
 export function Manifesto() {
   return (
-    <section id="manifesto" className="relative bg-ink text-paper py-24 md:py-32 overflow-hidden">
+    <section id="manifesto" className="relative bg-ink text-paper py-24 md:py-32 overflow-hidden scroll-mt-24">
       <div className="quote-bg opacity-[0.06]">
         <PixelField />
       </div>

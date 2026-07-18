@@ -25,7 +25,7 @@ const cards = [
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <section id="capabilities" className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 scroll-mt-24">
       <Reveal className="max-w-xl mb-14">
         <p className="mono-label text-xs text-green mb-4">What I build</p>
         <h2 className="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight">
