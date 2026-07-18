@@ -31,13 +31,13 @@ export function Nav() {
       >
         <a href="#top" className="flex items-center gap-4 group">
           <Image
-            src={scrolled ? "/logo/kigan-mark-transparent.png" : "/logo/kigan-mark-on-ink.png"}
+            src="/logo/kigan-mark-transparent.png"
             alt="Kigan mark"
             width={112}
             height={112}
             priority
-            className={`transition-[height,width] duration-500 ${
-              scrolled ? "h-8 w-8" : "h-24 w-24"
+            className={`transition-[height,width,filter] duration-500 ${
+              scrolled ? "h-8 w-8" : "h-24 w-24 brightness-0 invert"
             }`}
           />
           <span

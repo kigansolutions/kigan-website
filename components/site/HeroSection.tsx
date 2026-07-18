@@ -146,15 +146,19 @@ export function HeroSection() {
       <div className="relative z-10 min-h-screen flex flex-col justify-between items-center px-8 pt-40 pb-12 md:px-16 md:pt-48 md:pb-20">
         {/* Top lockup: mark / KIGAN / tagline, mirroring the real logo lockup */}
         <div className="text-center flex flex-col items-center">
-          <Image
-            src="/logo/kigan-mark-on-ink.png"
-            alt="Kigan"
-            width={56}
-            height={56}
-            priority
-            className="h-10 w-10 md:h-14 md:w-14 mb-3"
+          <div
+            className="mb-3"
             style={{ opacity: 0, animation: "word-appear 0.9s ease-out forwards", animationDelay: "0ms" }}
-          />
+          >
+            <Image
+              src="/logo/kigan-mark-transparent.png"
+              alt="Kigan"
+              width={56}
+              height={56}
+              priority
+              className="h-10 w-10 md:h-14 md:w-14 brightness-0 invert"
+            />
+          </div>
           <h2
             className="font-sans font-extrabold uppercase tracking-[0.06em] leading-none text-3xl md:text-4xl"
             style={{ color: "var(--color-paper)" }}
