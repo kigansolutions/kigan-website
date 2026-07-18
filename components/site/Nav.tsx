@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -80,6 +81,7 @@ export function Nav() {
           className="hidden md:inline-flex btn-primary px-5 py-2.5 text-sm font-medium rounded-sm"
         >
           Start a project
+          <ArrowRight className="btn-arrow" size={15} strokeWidth={2.25} />
         </a>
         <button
           onClick={() => setOpen((v) => !v)}

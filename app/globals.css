@@ -76,6 +76,14 @@ html { scroll-behavior: smooth; }
   }
 }
 
+/* Everything below is wrapped in @layer components so Tailwind utility
+   classes (hidden, md:inline-flex, etc.) always win over these custom
+   classes when both apply to the same element — unlayered CSS would
+   otherwise unconditionally beat layered utilities regardless of
+   breakpoint, which previously broke "hidden md:inline-flex" on the nav's
+   CTA button once .btn-primary started setting its own `display`. */
+@layer components {
+
 /* ---------- site chrome, ported from the static build (hex → tokens) ---------- */
 
 .mono-label {
@@ -91,28 +99,55 @@ html { scroll-behavior: smooth; }
 }
 
 .btn-primary {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
   background: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-deep) 100%);
   color: var(--color-paper);
   box-shadow:
-    0 1px 2px rgba(21,71,50,0.3),
-    0 6px 16px -6px rgba(21,71,50,0.5),
-    0 0 0 1px rgba(156,195,174,0.15);
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -8px 14px -8px rgba(0,0,0,0.25),
+    0 1px 2px rgba(21,71,50,0.35),
+    0 8px 20px -8px rgba(21,71,50,0.55);
   transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring);
 }
-.btn-primary:hover {
-  transform: translateY(-2px) scale(1.015);
-  box-shadow:
-    0 2px 4px rgba(21,71,50,0.35),
-    0 18px 34px -10px rgba(21,71,50,0.6),
-    0 0 0 1px rgba(156,195,174,0.4),
-    0 0 32px -4px rgba(156,195,174,0.5);
+/* soft breathing halo, reusing the hero's own pulse-glow keyframe so the
+   button reads as part of the same "alive" system rather than a static box */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(156,195,174,0.55) 0%, rgba(156,195,174,0.12) 55%, transparent 75%);
+  opacity: 0.6;
+  animation: pulse-glow 3.4s ease-in-out infinite;
+  pointer-events: none;
 }
-.btn-primary:active {
-  transform: translateY(0) scale(1);
+.btn-primary .btn-arrow {
+  display: inline-flex;
+  transition: transform 0.35s var(--ease-spring);
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
   box-shadow:
-    0 1px 2px rgba(21,71,50,0.3),
-    0 4px 10px -4px rgba(21,71,50,0.5),
-    0 0 0 1px rgba(156,195,174,0.25);
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    inset 0 -8px 14px -8px rgba(0,0,0,0.2),
+    0 2px 4px rgba(21,71,50,0.4),
+    0 20px 38px -10px rgba(21,71,50,0.65),
+    0 0 0 1px rgba(156,195,174,0.55);
+}
+.btn-primary:hover::after { opacity: 1; animation-duration: 1.6s; }
+.btn-primary:hover .btn-arrow { transform: translateX(4px); }
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -6px 10px -6px rgba(0,0,0,0.3),
+    0 1px 2px rgba(21,71,50,0.35),
+    0 4px 10px -4px rgba(21,71,50,0.5);
 }
 
 .btn-ghost {
@@ -138,7 +173,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .nav-link:hover::after { right: 0; }
 
 .pixel-divider { position: relative; height: 1px; background: var(--color-ink-4); opacity: 0.5; }
-.pixel-divider .blocks { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; gap: 3px; background: var(--color-paper); padding: 0 10px; }
+.pixel-divider .blocks { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; gap: 3px; background: var(--color-paper-2); padding: 0 10px; }
 .pixel-divider .blocks span { width: 4px; height: 4px; display: block; }
 
 .lift { transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring); }
@@ -274,3 +309,5 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   animation: underline-grow 1s ease-out forwards;
   animation-delay: 3.5s;
 }
+
+} /* end @layer components */
