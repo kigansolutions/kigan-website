@@ -1,3 +1,8 @@
+/* Hallmark · genre: atmospheric · macrostructure: existing IA preserved (redesign, not fresh build)
+ * design-system: existing Kigan brand tokens (below) · nav: N5 Floating pill · footer: Ft5 Statement
+ * hero: H1 Marquee, alignment=left-bias · features: F1 Bento, spans=irregular (7/5 · 5/7)
+ * fixed: italic headers (Process, CallToAction) · eyebrow-on-every-section (Capabilities, Process, CallToAction)
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";

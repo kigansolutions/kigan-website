@@ -23,9 +23,9 @@ export function Process() {
   return (
     <section id="process" className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 scroll-mt-24">
       <Reveal className="max-w-xl mb-16">
-        <p className="mono-label text-xs text-green mb-4">How I work</p>
         <h2 className="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight">
-          A short path from idea to <em className="italic text-green font-normal">autonomous</em>.
+          A short path from idea to{" "}
+          <span className="text-green font-semibold border-b-2 border-green/40 pb-0.5">autonomous</span>.
         </h2>
       </Reveal>
 

@@ -1,16 +1,19 @@
 "use client";
 
+/* Hallmark · nav: N5 Floating pill · knobs: width=max~720px, backdrop=blur+saturate, anchor=top-centred
+ * previous nav: informal N1a shape (full-width sticky bar, 4 inline links, CTA hard-right) */
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [solid, setSolid] = useState(false);
 
   useEffect(() => {
     function check() {
-      setScrolled(window.scrollY > window.innerHeight * 0.85);
+      setSolid(window.scrollY > 40);
     }
     check();
     window.addEventListener("scroll", check, { passive: true });
@@ -18,100 +21,100 @@ export function Nav() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
-        scrolled
-          ? "bg-paper/90 backdrop-blur border-b border-ink-4/40"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-50 px-4 flex justify-center">
       <div
-        className={`max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between transition-[height] duration-500 ${
-          scrolled ? "h-20" : "h-36 md:h-40"
+        className={`w-full max-w-3xl flex items-center justify-between gap-4 rounded-full border backdrop-blur-md px-4 md:px-6 py-2.5 transition-[background-color,border-color,box-shadow] duration-500 ${
+          solid
+            ? "bg-paper/90 border-ink-4/40 [box-shadow:var(--shadow-card)]"
+            : "bg-ink/35 border-paper/15"
         }`}
       >
-        <a href="#top" className="flex items-center gap-4 group">
-          <Image
-            src="/logo/kigan-mark-transparent.png"
-            alt="Kigan mark"
-            width={112}
-            height={112}
-            priority
-            className={`transition-[height,width,filter] duration-500 ${
-              scrolled ? "h-8 w-8" : "h-24 w-24 brightness-0 invert"
-            }`}
-          />
+        <a href="#top" className="flex items-center gap-1.5 shrink-0">
+          {/* cropped ~22% off the left — the source mark's dissolve-pixel edge reads
+              as dead space at this size; the crop keeps the K legible without it */}
+          <div className="relative h-7 w-7 overflow-hidden shrink-0">
+            <Image
+              src="/logo/kigan-mark-transparent.png"
+              alt="Kigan mark"
+              width={36}
+              height={34}
+              priority
+              className={`absolute -left-2 -top-[3px] h-[34px] w-[36px] max-w-none transition-[filter] duration-500 ${
+                solid ? "" : "brightness-0 invert"
+              }`}
+            />
+          </div>
           <span className="flex flex-col leading-none">
             <span
-              className={`font-display font-semibold tracking-tight transition-colors duration-500 ${
-                scrolled ? "text-lg text-ink" : "text-2xl md:text-3xl text-paper"
+              className={`font-display font-semibold text-sm tracking-tight transition-colors duration-500 ${
+                solid ? "text-ink" : "text-paper"
               }`}
             >
               KIGAN
             </span>
             <span
-              className={`mono-label transition-colors duration-500 ${
-                scrolled ? "text-[9px] text-ink-3 mt-0.5" : "text-[10px] md:text-xs text-sage mt-1.5"
+              className={`mono-label text-[8px] mt-0.5 transition-colors duration-500 ${
+                solid ? "text-ink-3" : "text-sage"
               }`}
             >
               Agentic AI Solutions
             </span>
           </span>
         </a>
+
         <nav
-          className={`hidden md:flex items-center gap-9 mono-label text-xs transition-colors duration-500 ${
-            scrolled ? "text-ink-2" : "text-paper/80"
+          className={`hidden md:flex items-center gap-6 mono-label text-[11px] transition-colors duration-500 ${
+            solid ? "text-ink-2" : "text-paper/80"
           }`}
         >
-          <a href="#capabilities" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
+          <a href="#capabilities" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
             Capabilities
           </a>
-          <a href="#process" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
+          <a href="#process" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
             Process
           </a>
-          <a href="#manifesto" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
+          <a href="#manifesto" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
             Manifesto
           </a>
-          <a href="#contact" className={`nav-link ${scrolled ? "hover:text-ink" : "hover:text-paper"}`}>
-            Contact
-          </a>
         </nav>
+
         <a
           href="#contact"
-          className="hidden md:inline-flex btn-primary px-5 py-2.5 text-sm font-medium rounded-sm"
+          className="hidden md:inline-flex btn-primary px-4 py-2 text-xs font-medium rounded-full"
         >
           Start a project
-          <ArrowRight className="btn-arrow" size={15} strokeWidth={2.25} />
+          <ArrowRight className="btn-arrow" size={13} strokeWidth={2.25} />
         </a>
+
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex flex-col gap-1.5 p-1.5"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <span className={`w-6 h-px transition-colors duration-500 ${scrolled ? "bg-ink" : "bg-paper"}`} />
-          <span className={`w-6 h-px transition-colors duration-500 ${scrolled ? "bg-ink" : "bg-paper"}`} />
+          <span className={`w-5 h-px transition-colors duration-500 ${solid ? "bg-ink" : "bg-paper"}`} />
+          <span className={`w-5 h-px transition-colors duration-500 ${solid ? "bg-ink" : "bg-paper"}`} />
         </button>
       </div>
-      <div
-        className="md:hidden overflow-hidden border-t border-ink-4/40 bg-paper transition-[max-height,opacity] duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
-        style={{ maxHeight: open ? "260px" : "0px", opacity: open ? 1 : 0 }}
-      >
-        <nav className="flex flex-col px-6 py-4 gap-4 mono-label text-xs text-ink-2">
-          <a href="#capabilities" onClick={() => setOpen(false)}>
-            Capabilities
-          </a>
-          <a href="#process" onClick={() => setOpen(false)}>
-            Process
-          </a>
-          <a href="#manifesto" onClick={() => setOpen(false)}>
-            Manifesto
-          </a>
-          <a href="#contact" className="text-green" onClick={() => setOpen(false)}>
-            Start a project →
-          </a>
-        </nav>
-      </div>
+
+      {open && (
+        <div className="md:hidden absolute top-full mt-2 left-4 right-4 rounded-2xl border border-ink-4/30 bg-paper [box-shadow:var(--shadow-float)] overflow-hidden">
+          <nav className="flex flex-col px-6 py-5 gap-4 mono-label text-xs text-ink-2">
+            <a href="#capabilities" onClick={() => setOpen(false)}>
+              Capabilities
+            </a>
+            <a href="#process" onClick={() => setOpen(false)}>
+              Process
+            </a>
+            <a href="#manifesto" onClick={() => setOpen(false)}>
+              Manifesto
+            </a>
+            <a href="#contact" className="text-green" onClick={() => setOpen(false)}>
+              Start a project →
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

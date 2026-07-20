@@ -1,0 +1,11 @@
+[
+  {
+    "date": "2026-07-20",
+    "macrostructure": "existing IA preserved (redesign)",
+    "theme": "existing Kigan brand tokens (paper/ink/green/sage, Fraunces/Inter/JetBrains Mono)",
+    "enrichment": "none (typography + existing ambient SVG/motion)",
+    "nav": "N5 Floating pill",
+    "footer": "Ft5 Statement",
+    "brief": "Kigan marketing site · redesign pass fixing audit findings (AI nav shape, italic headers, eyebrow-on-every-section, AI-footer shape, full-viewport centred hero, templated section rhythm)"
+  }
+]
