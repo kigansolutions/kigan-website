@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export function HeroSection() {
   const gradientRef = useRef<HTMLDivElement>(null);
@@ -121,6 +122,23 @@ export function HeroSection() {
         <circle cx="80%" cy="80%" r="2" className="detail-dot" style={{ animationDelay: "3.6s" }} />
         <circle cx="50%" cy="50%" r="1.5" className="detail-dot" style={{ animationDelay: "4s" }} />
       </svg>
+
+      {/* The cascading K — full mark, dissolve-pixel edge intact, bleeding off the left border
+          near the top of the hero. Reveals last, after the headline/paragraph/tagline cascade,
+          on the same word-appear timing so it reads as the final beat of one sequence rather
+          than a bolted-on decoration. */}
+      <div
+        className="hidden lg:block absolute left-[-4%] top-24 md:top-32 w-[26vw] max-w-[420px] opacity-0 pointer-events-none z-0"
+        style={{ animation: "word-appear 1.4s ease-out forwards", animationDelay: "4.8s" }}
+      >
+        <Image
+          src="/logo/kigan-mark-transparent.png"
+          alt=""
+          width={1400}
+          height={1320}
+          className="w-full h-auto opacity-70"
+        />
+      </div>
 
       {/* Corner elements */}
       <div className="corner-element top-8 left-8" style={{ animationDelay: "4s" }}>

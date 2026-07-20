@@ -31,8 +31,13 @@ export function Nav() {
       >
         <a href="#top" className="flex items-center gap-1.5 shrink-0">
           {/* cropped ~22% off the left — the source mark's dissolve-pixel edge reads
-              as dead space at this size; the crop keeps the K legible without it */}
-          <div className="relative h-7 w-7 overflow-hidden shrink-0">
+              as dead space at this size; the crop keeps the K legible without it.
+              The bleed-in animation lives on this wrapper, not the <Image>, so it
+              doesn't fight the image's own scroll-driven invert filter transition. */}
+          <div
+            className="relative h-7 w-7 overflow-hidden shrink-0 opacity-0"
+            style={{ animation: "word-appear 1s ease-out forwards", animationDelay: "0.1s" }}
+          >
             <Image
               src="/logo/kigan-mark-transparent.png"
               alt="Kigan mark"
@@ -79,7 +84,7 @@ export function Nav() {
         </nav>
 
         <a
-          href="#contact"
+          href="mailto:enquiries@kigansolutions.co.za"
           className="hidden md:inline-flex btn-primary px-4 py-2 text-xs font-medium rounded-full"
         >
           Start a project
@@ -109,7 +114,7 @@ export function Nav() {
             <a href="#manifesto" onClick={() => setOpen(false)}>
               Manifesto
             </a>
-            <a href="#contact" className="text-green" onClick={() => setOpen(false)}>
+            <a href="mailto:enquiries@kigansolutions.co.za" className="text-green" onClick={() => setOpen(false)}>
               Start a project →
             </a>
           </nav>
