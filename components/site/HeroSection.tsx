@@ -142,9 +142,9 @@ export function HeroSection() {
       <div className="floating-element" style={{ top: "40%", left: "10%", animationDelay: "6s" }} />
       <div className="floating-element" style={{ top: "75%", left: "90%", animationDelay: "6.5s" }} />
 
-      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center gap-16 md:gap-20 px-8 pt-32 pb-12 md:px-16 md:pt-40 md:pb-20">
-        {/* Main headline */}
-        <div className="text-center max-w-5xl mx-auto">
+      <div className="relative z-10 min-h-[88vh] md:min-h-screen w-full max-w-7xl mx-auto flex flex-col justify-end gap-14 md:gap-16 px-8 pt-40 pb-16 md:px-16 md:pt-48 md:pb-24">
+        {/* Main headline — left-biased, not dead-centre */}
+        <div className="text-left max-w-3xl">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extralight leading-tight tracking-tight text-decoration" style={{ color: "var(--color-paper)" }}>
             <div className="mb-4 md:mb-6">
               <span className="word" data-delay="200">Software</span>
@@ -177,17 +177,25 @@ export function HeroSection() {
             className="absolute -left-8 top-1/2 w-4 h-px opacity-20"
             style={{ background: "var(--color-sage)", animation: "word-appear 1s ease-out forwards", animationDelay: "2.1s" }}
           />
-          <div
-            className="absolute -right-8 top-1/2 w-4 h-px opacity-20"
-            style={{ background: "var(--color-sage)", animation: "word-appear 1s ease-out forwards", animationDelay: "2.3s" }}
-          />
         </div>
 
-        {/* Bottom tagline */}
-        <div className="text-center">
+        {/* Explainer paragraph — plain-language, answers "what do you actually do" before anything else */}
+        <p
+          className="text-left max-w-xl text-base md:text-lg leading-[1.7] font-light opacity-0"
+          style={{ color: "var(--color-paper)", animation: "word-appear 1s ease-out forwards", animationDelay: "3.8s" }}
+        >
+          I build AI agents that plug directly into the software you already run and carry a task
+          through to done, not just draft something for someone to finish. Tell me what&rsquo;s eating
+          your team&rsquo;s time and I&rsquo;ll tell you plainly whether an agent can take it off your
+          plate. When it can, you get a system running in production from day one, with the approvals
+          and guardrails your team needs before they&rsquo;ll trust it.
+        </p>
+
+        {/* Tagline — anchored left under the headline, not a separate centred block */}
+        <div className="text-left">
           <div
-            className="mb-4 w-16 h-px opacity-30 mx-auto"
-            style={{ background: "linear-gradient(to right, transparent, var(--color-sage), transparent)" }}
+            className="mb-4 w-16 h-px opacity-30"
+            style={{ background: "linear-gradient(to right, var(--color-sage), transparent)" }}
           />
           <h2 className="text-xs md:text-sm font-mono font-light uppercase tracking-[0.2em] opacity-80" style={{ color: "var(--color-sage)" }}>
             <span className="word" data-delay="3600">Multi-agent</span>
@@ -200,7 +208,7 @@ export function HeroSection() {
             <span className="word" data-delay="4650">default.</span>
           </h2>
           <div
-            className="mt-6 flex justify-center space-x-4 opacity-0"
+            className="mt-6 flex justify-start space-x-4 opacity-0"
             style={{ animation: "word-appear 1s ease-out forwards", animationDelay: "3.6s" }}
           >
             <div className="w-1 h-1 rounded-full opacity-40" style={{ background: "var(--color-sage)" }} />
