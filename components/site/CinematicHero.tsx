@@ -6,8 +6,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Mobile browsers fire resize events when the address bar collapses/expands
+// on scroll — without this, ScrollTrigger treats that as a real layout
+// change and can re-measure/jump mid-scroll.
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 const DAMP_RATE = 6;
-const SEEK_EPSILON = 0.01;
+const SEEK_EPSILON = 0.02;
 
 const CHAPTERS = [
   {
@@ -138,8 +143,8 @@ export function CinematicHero() {
   }, [reducedMotion]);
 
   return (
-    <div id="top" ref={sectionRef} className="relative" style={{ height: "340vh" }}>
-      <div ref={stageRef} className="sticky top-0 h-screen w-full overflow-hidden bg-ink">
+    <div id="top" ref={sectionRef} className="relative" style={{ height: "340svh" }}>
+      <div ref={stageRef} className="sticky top-0 h-[100svh] w-full overflow-hidden bg-ink">
         <video
           ref={videoRef}
           src="/media/signal-ordered.mp4"
