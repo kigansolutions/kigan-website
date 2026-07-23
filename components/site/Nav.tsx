@@ -12,12 +12,21 @@ export function Nav() {
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
+    // Threshold tracks the hero's own height (it's a tall pinned section, not
+    // one viewport) so the nav stays transparent-on-dark for the full cinematic
+    // hero and only goes solid once the paper-background sections begin.
     function check() {
-      setSolid(window.scrollY > 40);
+      const hero = document.getElementById("top");
+      const threshold = hero ? hero.offsetHeight - window.innerHeight * 0.6 : 40;
+      setSolid(window.scrollY > threshold);
     }
     check();
     window.addEventListener("scroll", check, { passive: true });
-    return () => window.removeEventListener("scroll", check);
+    window.addEventListener("resize", check);
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
   }, []);
 
   return (

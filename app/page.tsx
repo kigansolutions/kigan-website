@@ -1,5 +1,5 @@
 import { Nav } from "@/components/site/Nav";
-import { HeroSection } from "@/components/site/HeroSection";
+import { CinematicHero } from "@/components/site/CinematicHero";
 import { Capabilities } from "@/components/site/Capabilities";
 import { Process } from "@/components/site/Process";
 import { Manifesto } from "@/components/site/Manifesto";
@@ -23,9 +23,7 @@ export default function Home() {
     <>
       <div className="grain" />
       <Nav />
-      <div id="top">
-        <HeroSection />
-      </div>
+      <CinematicHero />
       <PixelDivider />
       <Capabilities />
       <PixelDivider />
