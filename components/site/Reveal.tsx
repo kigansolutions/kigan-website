@@ -13,6 +13,11 @@ export function Reveal({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const animationFrame = window.requestAnimationFrame(() => setVisible(true));
+      return () => window.cancelAnimationFrame(animationFrame);
+    }
+
     let revealed = false;
 
     function check() {
