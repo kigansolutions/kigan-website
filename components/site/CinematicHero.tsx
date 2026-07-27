@@ -139,7 +139,6 @@ export function CinematicHero() {
       video.removeEventListener("seeked", onSeeked);
       ctx.revert();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reducedMotion]);
 
   return (
