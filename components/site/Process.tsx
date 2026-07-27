@@ -3,19 +3,19 @@ import { Reveal } from "./Reveal";
 const steps = [
   {
     step: "01 · Discover",
-    body: "I map the workflow, the data it touches, and where a person is currently making repetitive judgment calls.",
+    body: "I map the workflow, the data it touches, and where people are making repetitive judgment calls.",
   },
   {
     step: "02 · Design",
-    body: "I architect the agent, the tools it can call, and the guardrails around it — before any production code.",
+    body: "I define the workflow, the tools it can use, and the approval points before building a pilot.",
   },
   {
-    step: "03 · Deploy",
-    body: "I ship into your existing stack, behind the access controls and approvals your team requires.",
+    step: "03 · Prove",
+    body: "I test a focused workflow with clear controls and evidence before expanding its scope.",
   },
   {
-    step: "04 · Operate",
-    body: "I monitor, retrain, and extend the agent as your business changes around it.",
+    step: "04 · Evolve",
+    body: "I improve the workflow as the business changes, increasing autonomy only when it earns trust.",
   },
 ];
 
@@ -24,8 +24,8 @@ export function Process() {
     <section id="process" className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 scroll-mt-24">
       <Reveal className="max-w-xl mb-16">
         <h2 className="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight">
-          A short path from idea to{" "}
-          <span className="text-green font-semibold border-b-2 border-green/40 pb-0.5">autonomous</span>.
+          A short path from idea to a{" "}
+          <span className="text-green font-semibold border-b-2 border-green/40 pb-0.5">trusted workflow</span>.
         </h2>
       </Reveal>
 

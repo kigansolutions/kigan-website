@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Kigan — Agentic AI Solutions",
   description:
-    "Kigan designs and operates autonomous AI agents that take real actions inside the systems you already run.",
+    "Kigan designs review-gated AI workflows and agent systems around the way your business already works.",
   icons: { icon: "/logo/kigan-mark-transparent.png" },
 };
 
