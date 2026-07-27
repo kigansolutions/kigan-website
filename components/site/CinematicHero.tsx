@@ -22,7 +22,7 @@ const CHAPTERS = [
   },
   {
     eyebrow: "How it works",
-    heading: "Agents that read, decide, and act inside the systems you already run.",
+    heading: "AI workflows that help your team decide and act with clear approval points.",
     tone: "sage",
   },
 ] as const;
@@ -205,7 +205,7 @@ export function CinematicHero() {
               <span className="not-italic font-medium text-sage">doesn&rsquo;t wait.</span>&rdquo;
             </p>
             <p className="mono-label mt-6 text-[11px] text-ink-4">
-              Multi-agent orchestration · Real system integration · Guardrails by default
+              Multi-agent design · Scoped integrations · Guardrails by default
             </p>
           </div>
         </div>
