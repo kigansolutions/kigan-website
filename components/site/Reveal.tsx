@@ -13,23 +13,26 @@ export function Reveal({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
-    }
+    let revealed = false;
+
     function check() {
-      if (visible || !ref.current) return;
+      if (revealed || !ref.current) return;
       const rect = ref.current.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.92) setVisible(true);
+      if (rect.top < window.innerHeight * 0.92) {
+        revealed = true;
+        setVisible(true);
+      }
     }
-    check();
+
+    const animationFrame = window.requestAnimationFrame(check);
     window.addEventListener("scroll", check, { passive: true });
     window.addEventListener("resize", check);
     return () => {
+      window.cancelAnimationFrame(animationFrame);
       window.removeEventListener("scroll", check);
       window.removeEventListener("resize", check);
     };
-  }, [visible]);
+  }, []);
 
   return (
     <div ref={ref} className={`reveal ${visible ? "in" : ""} ${className}`}>
