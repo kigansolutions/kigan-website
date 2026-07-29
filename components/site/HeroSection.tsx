@@ -165,30 +165,32 @@ export function HeroSection() {
         <div className="text-left max-w-3xl">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extralight leading-tight tracking-tight text-decoration" style={{ color: "var(--color-paper)" }}>
             <div className="mb-4 md:mb-6">
-              <span className="word" data-delay="200">Software</span>
-              <span className="word" data-delay="350">that</span>
-              <span className="word" data-delay="500">finishes</span>
-              <span className="word" data-delay="650">the</span>
-              <span className="word" data-delay="800">task</span>
-              <span className="word" data-delay="950">—</span>
-              <span className="word" data-delay="1100">not</span>
-              <span className="word" data-delay="1250">just</span>
-              <span className="word" data-delay="1400">the</span>
-              <span className="word" data-delay="1550">sentence.</span>
+              <span className="word" data-delay="200">AI</span>
+              <span className="word" data-delay="350">workflows</span>
+              <span className="word" data-delay="500">that</span>
+              <span className="word" data-delay="650">carry</span>
+              <span className="word" data-delay="800">the</span>
+              <span className="word" data-delay="950">task</span>
+              <span className="word" data-delay="1100">forward</span>
+              <span className="word" data-delay="1250">—</span>
+              <span className="word" data-delay="1400">not</span>
+              <span className="word" data-delay="1550">just</span>
+              <span className="word" data-delay="1700">the</span>
+              <span className="word" data-delay="1850">sentence.</span>
             </div>
             <div className="text-2xl md:text-3xl lg:text-4xl font-thin leading-relaxed" style={{ color: "var(--color-sage)" }}>
-              <span className="word" data-delay="1800">Agents</span>
-              <span className="word" data-delay="1950">that</span>
-              <span className="word" data-delay="2100">read,</span>
-              <span className="word" data-delay="2250">decide,</span>
-              <span className="word" data-delay="2400">and</span>
-              <span className="word" data-delay="2550">act</span>
-              <span className="word" data-delay="2700">inside</span>
-              <span className="word" data-delay="2850">the</span>
-              <span className="word" data-delay="3000">systems</span>
-              <span className="word" data-delay="3150">you</span>
-              <span className="word" data-delay="3300">already</span>
-              <span className="word" data-delay="3450">run.</span>
+              <span className="word" data-delay="2100">Review-gated</span>
+              <span className="word" data-delay="2250">systems</span>
+              <span className="word" data-delay="2400">that</span>
+              <span className="word" data-delay="2550">read,</span>
+              <span className="word" data-delay="2700">suggest,</span>
+              <span className="word" data-delay="2850">and</span>
+              <span className="word" data-delay="3000">move</span>
+              <span className="word" data-delay="3150">work</span>
+              <span className="word" data-delay="3300">through</span>
+              <span className="word" data-delay="3450">clear</span>
+              <span className="word" data-delay="3600">approval</span>
+              <span className="word" data-delay="3750">points.</span>
             </div>
           </h1>
           <div
@@ -202,11 +204,10 @@ export function HeroSection() {
           className="text-left max-w-xl text-base md:text-lg leading-[1.7] font-light opacity-0"
           style={{ color: "var(--color-paper)", animation: "word-appear 1s ease-out forwards", animationDelay: "3.8s" }}
         >
-          I build AI agents that plug directly into the software you already run and carry a task
-          through to done, not just draft something for someone to finish. Tell me what&rsquo;s eating
-          your team&rsquo;s time and I&rsquo;ll tell you plainly whether an agent can take it off your
-          plate. When it can, you get a system running in production from day one, with the approvals
-          and guardrails your team needs before they&rsquo;ll trust it.
+          I build review-gated AI workflows around the software you already run, starting with
+          scoped tasks and clear approval points. Tell me what&rsquo;s eating your team&rsquo;s time and
+          I&rsquo;ll tell you plainly whether an agentic workflow is a good fit, what it can safely
+          do now, and what evidence it needs before more autonomy is earned.
         </p>
 
         {/* Tagline — anchored left under the headline, not a separate centred block */}
@@ -216,14 +217,14 @@ export function HeroSection() {
             style={{ background: "linear-gradient(to right, var(--color-sage), transparent)" }}
           />
           <h2 className="text-xs md:text-sm font-mono font-light uppercase tracking-[0.2em] opacity-80" style={{ color: "var(--color-sage)" }}>
-            <span className="word" data-delay="3600">Multi-agent</span>
-            <span className="word" data-delay="3750">orchestration.</span>
-            <span className="word" data-delay="3900">Real</span>
-            <span className="word" data-delay="4050">system</span>
-            <span className="word" data-delay="4200">integration.</span>
-            <span className="word" data-delay="4350">Guardrails</span>
-            <span className="word" data-delay="4500">by</span>
-            <span className="word" data-delay="4650">default.</span>
+            <span className="word" data-delay="3900">Review-gated</span>
+            <span className="word" data-delay="4050">orchestration.</span>
+            <span className="word" data-delay="4200">Scoped</span>
+            <span className="word" data-delay="4350">system</span>
+            <span className="word" data-delay="4500">integration.</span>
+            <span className="word" data-delay="4650">Guardrails</span>
+            <span className="word" data-delay="4800">by</span>
+            <span className="word" data-delay="4950">default.</span>
           </h2>
           <div
             className="mt-6 flex justify-start space-x-4 opacity-0"
