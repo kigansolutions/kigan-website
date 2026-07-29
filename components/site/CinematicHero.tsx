@@ -17,12 +17,12 @@ const SEEK_EPSILON = 0.02;
 const CHAPTERS = [
   {
     eyebrow: "Agentic AI Solutions",
-    heading: "Software that finishes the task — not just the sentence.",
+    heading: "AI workflows that carry the task forward — not just the sentence.",
     tone: "paper",
   },
   {
     eyebrow: "How it works",
-    heading: "AI workflows that help your team decide and act with clear approval points.",
+    heading: "Review-gated systems that help your team decide, act, and improve with clear approval points.",
     tone: "sage",
   },
 ] as const;
@@ -199,12 +199,12 @@ export function CinematicHero() {
             }}
           >
             <p className="font-display text-2xl italic leading-snug text-paper md:text-3xl">
-              &ldquo;Most software still waits to be asked.
-              <br className="hidden md:block" /> I build the kind that{" "}
-              <span className="not-italic font-medium text-sage">doesn&rsquo;t wait.</span>&rdquo;
+              &ldquo;Most software still drops the thread.
+              <br className="hidden md:block" /> I build workflows that{" "}
+              <span className="not-italic font-medium text-sage">keep it moving.</span>&rdquo;
             </p>
             <p className="mono-label mt-6 text-[11px] text-ink-4">
-              Multi-agent design · Scoped integrations · Guardrails by default
+              Review-gated workflows · Scoped integrations · Guardrails by default
             </p>
           </div>
         </div>
