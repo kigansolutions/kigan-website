@@ -25,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kigan — Agentic AI Solutions",
+  title: "Kigan — AI-Native Studios & Platform",
   description:
-    "Kigan designs review-gated AI workflows and agent systems around the way your business already works.",
+    "Kigan is an AI-native professional services company built around specialised Studios, a shared intelligence Platform, and human accountability.",
   icons: { icon: "/logo/kigan-mark-transparent.png" },
 };
 

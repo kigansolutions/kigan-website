@@ -9,11 +9,11 @@ export function Manifesto() {
       </div>
       <Reveal className="relative max-w-3xl mx-auto px-6 md:px-10 text-center">
         <p className="font-display italic font-normal text-[1.75rem] md:text-4xl leading-[1.4] tracking-tight">
-          &ldquo;Most software still drops the thread.
-          <br className="hidden md:block" /> I build workflows that{" "}
-          <span className="text-sage not-italic font-medium">keep it moving.</span>&rdquo;
+          &ldquo;Agents prepare. Systems enforce.
+          <br className="hidden md:block" /> Humans approve the decisions that{" "}
+          <span className="text-sage not-italic font-medium">cannot be delegated.</span>&rdquo;
         </p>
-        <p className="mono-label text-xs text-ink-4 mt-8">— Kigan, on agentic AI</p>
+        <p className="mono-label text-xs text-ink-4 mt-8">Kigan operating principle</p>
       </Reveal>
     </section>
   );

@@ -10,7 +10,7 @@ export function Footer() {
             LinkedIn
           </a>
         </nav>
-        <p className="mono-label text-[11px] text-ink-3">© 2026 Kigan Agentic AI Solutions. All rights reserved.</p>
+        <p className="mono-label text-[11px] text-ink-3">© 2026 Kigan AI-Native Studios & Platform. All rights reserved.</p>
       </div>
     </footer>
   );

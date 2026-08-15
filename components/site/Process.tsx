@@ -3,19 +3,19 @@ import { Reveal } from "./Reveal";
 const steps = [
   {
     step: "01 · Discover",
-    body: "I map the workflow, the data it touches, and where people are making repetitive judgment calls.",
+    body: "I clarify the business outcome, the people involved, the evidence available, and the decisions that cannot be guessed.",
   },
   {
-    step: "02 · Design",
-    body: "I define the workflow, the tools it can use, and the approval points before building a pilot.",
+    step: "02 · Shape",
+    body: "I choose the Studio path, define the system, and mark where AI can move quickly and where human approval stays required.",
   },
   {
     step: "03 · Prove",
-    body: "I test a focused workflow with clear controls and evidence before expanding its scope.",
+    body: "I build a focused artifact or workflow, test it against real material, and keep claims tied to what the work actually shows.",
   },
   {
     step: "04 · Evolve",
-    body: "I improve the workflow as the business changes, increasing autonomy only when it earns trust.",
+    body: "I feed what worked back into the Platform so future Studio work starts with better context, tools, and judgment.",
   },
 ];
 
@@ -24,8 +24,8 @@ export function Process() {
     <section id="process" className="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 scroll-mt-24">
       <Reveal className="max-w-xl mb-16">
         <h2 className="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight">
-          A short path from idea to a{" "}
-          <span className="text-green font-semibold border-b-2 border-green/40 pb-0.5">trusted workflow</span>.
+          A delivery model built around{" "}
+          <span className="text-green font-semibold border-b-2 border-green/40 pb-0.5">earned trust</span>.
         </h2>
       </Reveal>
 

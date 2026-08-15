@@ -194,6 +194,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .quote-bg { position: absolute; inset: 0; overflow: hidden; }
 .quote-bg .pixel-field span { background: var(--color-sage); }
 
+.platform-grid {
+  position: absolute;
+  inset: -1px;
+  background-image:
+    linear-gradient(rgba(156,195,174,0.42) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156,195,174,0.42) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+}
+
 /* ---------- hero-section.tsx: word-cascade hero, restyled to Kigan brand ---------- */
 
 @keyframes word-appear {

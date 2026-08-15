@@ -16,13 +16,13 @@ const SEEK_EPSILON = 0.02;
 
 const CHAPTERS = [
   {
-    eyebrow: "Agentic AI Solutions",
-    heading: "AI workflows that carry the task forward — not just the sentence.",
+    eyebrow: "Kigan 2.0",
+    heading: "An AI-native professional services company built around Studios and a shared intelligence Platform.",
     tone: "paper",
   },
   {
-    eyebrow: "How it works",
-    heading: "Review-gated systems that help your team decide, act, and improve with clear approval points.",
+    eyebrow: "How Kigan works",
+    heading: "Specialised AI does the heavy lifting. I stay accountable for the judgment, evidence, and outcome.",
     tone: "sage",
   },
 ] as const;
@@ -199,12 +199,12 @@ export function CinematicHero() {
             }}
           >
             <p className="font-display text-2xl italic leading-snug text-paper md:text-3xl">
-              &ldquo;Most software still drops the thread.
-              <br className="hidden md:block" /> I build workflows that{" "}
-              <span className="not-italic font-medium text-sage">keep it moving.</span>&rdquo;
+              &ldquo;Kigan is not AI for its own sake.
+              <br className="hidden md:block" /> It is a way to turn focused capability into{" "}
+              <span className="not-italic font-medium text-sage">better business outcomes.</span>&rdquo;
             </p>
             <p className="mono-label mt-6 text-[11px] text-ink-4">
-              Review-gated workflows · Scoped integrations · Guardrails by default
+              Studios · Shared platform · Human accountability
             </p>
           </div>
         </div>

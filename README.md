@@ -1,6 +1,6 @@
 # kigan-website
 
-Marketing site for Kigan Agentic AI Solutions — live at [kigan-website.vercel.app](https://kigan-website.vercel.app).
+Marketing site for Kigan — an AI-native professional services company built around specialised Studios and a shared intelligence Platform. Live at [kigan-website.vercel.app](https://kigan-website.vercel.app).
 
 ## Stack
 
@@ -18,8 +18,10 @@ components/site/
   Nav.tsx             navigation
   HeroSection.tsx      hero
   Manifesto.tsx         positioning / philosophy
-  Capabilities.tsx       what Kigan builds
+  Capabilities.tsx       Studio model
+  Platform.tsx           shared intelligence Platform
   Process.tsx             how engagements work
+  Proof.tsx               proof-in-progress signals
   CallToAction.tsx         contact CTA
   Footer.tsx
   PixelField.tsx           background animation

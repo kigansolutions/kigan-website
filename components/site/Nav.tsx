@@ -38,22 +38,22 @@ export function Nav() {
             : "bg-ink/35 border-paper/15"
         }`}
       >
-        <a href="#top" className="flex items-center gap-1.5 shrink-0">
+        <a href="#top" className="flex items-center gap-2 shrink-0">
           {/* cropped ~22% off the left — the source mark's dissolve-pixel edge reads
               as dead space at this size; the crop keeps the K legible without it.
               The bleed-in animation lives on this wrapper, not the <Image>, so it
               doesn't fight the image's own scroll-driven invert filter transition. */}
           <div
-            className="relative h-7 w-7 overflow-hidden shrink-0 opacity-0"
+            className="relative h-9 w-9 overflow-hidden shrink-0 opacity-0"
             style={{ animation: "word-appear 1s ease-out forwards", animationDelay: "0.1s" }}
           >
             <Image
               src="/logo/kigan-mark-transparent.png"
               alt="Kigan mark"
-              width={36}
-              height={34}
+              width={44}
+              height={42}
               priority
-              className={`absolute -left-2 -top-[3px] h-[34px] w-[36px] max-w-none transition-[filter] duration-500 ${
+              className={`absolute -left-2 -top-[3px] h-[42px] w-[44px] max-w-none transition-[filter] duration-500 ${
                 solid ? "" : "brightness-0 invert"
               }`}
             />
@@ -71,7 +71,7 @@ export function Nav() {
                 solid ? "text-ink-3" : "text-sage"
               }`}
             >
-              Agentic AI Solutions
+              Studios & Platform
             </span>
           </span>
         </a>
@@ -82,13 +82,13 @@ export function Nav() {
           }`}
         >
           <a href="#capabilities" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
-            Capabilities
+            Studios
           </a>
-          <a href="#process" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
-            Process
+          <a href="#platform" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
+            Platform
           </a>
-          <a href="#manifesto" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
-            Manifesto
+          <a href="#proof" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
+            Proof
           </a>
         </nav>
 
@@ -115,13 +115,13 @@ export function Nav() {
         <div className="md:hidden absolute top-full mt-2 left-4 right-4 rounded-2xl border border-ink-4/30 bg-paper [box-shadow:var(--shadow-float)] overflow-hidden">
           <nav className="flex flex-col px-6 py-5 gap-4 mono-label text-xs text-ink-2">
             <a href="#capabilities" onClick={() => setOpen(false)}>
-              Capabilities
+              Studios
             </a>
-            <a href="#process" onClick={() => setOpen(false)}>
-              Process
+            <a href="#platform" onClick={() => setOpen(false)}>
+              Platform
             </a>
-            <a href="#manifesto" onClick={() => setOpen(false)}>
-              Manifesto
+            <a href="#proof" onClick={() => setOpen(false)}>
+              Proof
             </a>
             <a href="mailto:enquiries@kigansolutions.co.za" className="text-green" onClick={() => setOpen(false)}>
               Start a project →

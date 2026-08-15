@@ -1,7 +1,9 @@
 import { Nav } from "@/components/site/Nav";
 import { CinematicHero } from "@/components/site/CinematicHero";
 import { Capabilities } from "@/components/site/Capabilities";
+import { Platform } from "@/components/site/Platform";
 import { Process } from "@/components/site/Process";
+import { Proof } from "@/components/site/Proof";
 import { Manifesto } from "@/components/site/Manifesto";
 import { CallToAction } from "@/components/site/CallToAction";
 import { Footer } from "@/components/site/Footer";
@@ -26,8 +28,10 @@ export default function Home() {
       <CinematicHero />
       <PixelDivider />
       <Capabilities />
+      <Platform />
       <PixelDivider />
       <Process />
+      <Proof />
       <Manifesto />
       <CallToAction />
       <Footer />
