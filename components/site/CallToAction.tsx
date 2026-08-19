@@ -10,7 +10,7 @@ export function CallToAction() {
           <span className="text-green font-semibold border-b-2 border-green/40 pb-0.5">solving</span>.
         </h2>
         <p className="mt-5 text-ink-2 leading-[1.7] max-w-md font-light">
-          A short conversation is usually enough to tell whether this belongs in Brand Studio, Workflow Studio, Growth Studio, or nowhere yet.
+          A short conversation is usually enough to tell whether this belongs in Brand Studio, Workflow Studio, or nowhere yet.
         </p>
         <p className="mt-3 text-sm text-ink-2/80 leading-[1.6] max-w-md">
           Send the messy version. I&apos;ll help shape the question before we decide what to build.
