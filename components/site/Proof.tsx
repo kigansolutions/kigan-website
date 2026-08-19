@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const proof = [
@@ -15,6 +16,24 @@ const proof = [
     state: "Testing in public view",
     title: "AI Platform spike",
     body: "The platform work is being tested through evidence, decisions, workflows, and architecture spikes before broader claims are made.",
+  },
+];
+
+const publicProof = [
+  {
+    title: "Newsletter Automation",
+    body: "Kigan first-party public work: a draft-first workflow for sourcing, branded copy, assembly, and Gmail draft creation for review.",
+    href: "https://github.com/kigansolutions/newsletter-automation",
+  },
+  {
+    title: "Hermes Agent Framework",
+    body: "Kigan first-party public work: inspectable orchestration, planner architecture, workflows, and safety documentation.",
+    href: "https://github.com/kigansolutions/hermes-agent-framework",
+  },
+  {
+    title: "n8n Security Automation",
+    body: "Kigan first-party public work showing structured security automation with explicit authorization boundaries, reusable workflow definitions, validation gates, and controlled automation pipelines. The example is security-focused; the transferable evidence is governed workflow engineering and checking discipline.",
+    href: "https://github.com/kigansolutions/n8n-security-automation",
   },
 ];
 
@@ -42,6 +61,28 @@ export function Proof() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal className="mt-14 border-t border-ink-4/40 pt-6">
+        <p className="mono-label text-[10px] text-green mb-5">Public first-party work</p>
+        <div className="grid gap-5 md:grid-cols-3">
+          {publicProof.map((item) => (
+            <div key={item.title} className="min-w-0">
+              <h3 className="font-display font-semibold text-xl mb-3">{item.title}</h3>
+              <p className="text-ink-2 leading-[1.7] font-light">{item.body}</p>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-green hover:text-green-deep transition-colors"
+              >
+                Inspect the public repository
+                <ExternalLink size={14} strokeWidth={2} aria-hidden="true" />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }
