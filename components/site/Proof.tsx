@@ -32,7 +32,7 @@ const publicProof = [
   },
   {
     title: "n8n Security Automation",
-    body: "Kigan first-party public work: inspectable n8n workflow definitions and workflow validation tooling.",
+    body: "Kigan first-party public work showing structured security automation with explicit authorization boundaries, reusable workflow definitions, validation gates, and controlled automation pipelines. The example is security-focused; the transferable evidence is governed workflow engineering and checking discipline.",
     href: "https://github.com/kigansolutions/n8n-security-automation",
   },
 ];
