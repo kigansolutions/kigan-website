@@ -181,6 +181,25 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .pixel-divider .blocks { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; gap: 3px; background: var(--color-paper-2); padding: 0 10px; }
 .pixel-divider .blocks span { width: 4px; height: 4px; display: block; }
 
+/* ---------- build-log.tsx: vertical rail + commit/milestone pills ---------- */
+
+.timeline-rail { position: relative; }
+.timeline-rail::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 8px; width: 1px;
+  background: var(--color-paper-2); opacity: 0.15;
+}
+
+.trailer-pill {
+  display: inline-flex; align-items: center; gap: 0.4em;
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-label);
+  font-size: 10px; padding: 2px 8px; border-radius: 999px; border: 1px solid currentColor;
+}
+.trailer-pill.is-present { color: var(--color-sage); }
+.trailer-pill.is-absent { color: var(--color-paper); opacity: 0.6; }
+.trailer-pill.is-live { color: var(--color-sage); }
+.trailer-pill.is-cached { color: var(--color-paper); opacity: 0.55; }
+.trailer-pill .dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+
 .lift { transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring); }
 .lift:hover { transform: translateY(-5px); border-color: var(--color-green); }
 

@@ -5,11 +5,18 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [solid, setSolid] = useState(false);
+  const pathname = usePathname();
+  // Every in-page link (#capabilities etc.) only works relative to "/" — on
+  // any other route it needs the home path prefixed so it navigates back first.
+  const homePrefix = pathname === "/" ? "" : "/";
+  const onBuildLog = pathname === "/build-log";
 
   useEffect(() => {
     // Threshold tracks the hero's own height (it's a tall pinned section, not
@@ -38,7 +45,7 @@ export function Nav() {
             : "bg-ink/35 border-paper/15"
         }`}
       >
-        <a href="#top" className="flex items-center gap-1.5 shrink-0">
+        <Link href={`${homePrefix}#top`} className="flex items-center gap-1.5 shrink-0">
           {/* cropped ~22% off the left — the source mark's dissolve-pixel edge reads
               as dead space at this size; the crop keeps the K legible without it.
               The bleed-in animation lives on this wrapper, not the <Image>, so it
@@ -74,22 +81,28 @@ export function Nav() {
               Agentic AI Solutions
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav
           className={`hidden md:flex items-center gap-6 mono-label text-[11px] transition-colors duration-500 ${
             solid ? "text-ink-2" : "text-paper/80"
           }`}
         >
-          <a href="#capabilities" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
+          <a href={`${homePrefix}#capabilities`} className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
             Capabilities
           </a>
-          <a href="#process" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
+          <a href={`${homePrefix}#process`} className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
             Process
           </a>
-          <a href="#manifesto" className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
+          <a href={`${homePrefix}#manifesto`} className={`nav-link ${solid ? "hover:text-ink" : "hover:text-paper"}`}>
             Manifesto
           </a>
+          <Link
+            href="/build-log"
+            className={`nav-link ${onBuildLog ? "text-green" : solid ? "hover:text-ink" : "hover:text-paper"}`}
+          >
+            Build Log
+          </Link>
         </nav>
 
         <a
@@ -114,15 +127,18 @@ export function Nav() {
       {open && (
         <div className="md:hidden absolute top-full mt-2 left-4 right-4 rounded-2xl border border-ink-4/30 bg-paper [box-shadow:var(--shadow-float)] overflow-hidden">
           <nav className="flex flex-col px-6 py-5 gap-4 mono-label text-xs text-ink-2">
-            <a href="#capabilities" onClick={() => setOpen(false)}>
+            <a href={`${homePrefix}#capabilities`} onClick={() => setOpen(false)}>
               Capabilities
             </a>
-            <a href="#process" onClick={() => setOpen(false)}>
+            <a href={`${homePrefix}#process`} onClick={() => setOpen(false)}>
               Process
             </a>
-            <a href="#manifesto" onClick={() => setOpen(false)}>
+            <a href={`${homePrefix}#manifesto`} onClick={() => setOpen(false)}>
               Manifesto
             </a>
+            <Link href="/build-log" className={onBuildLog ? "text-green" : ""} onClick={() => setOpen(false)}>
+              Build Log
+            </Link>
             <a href="mailto:enquiries@kigansolutions.co.za" className="text-green" onClick={() => setOpen(false)}>
               Start a project →
             </a>
